@@ -1,25 +1,23 @@
-import React, { Component } from "react";
-import PersonaCard from "./components/PersonCard";
+import React, { useState } from "react";
+import "./App.css";
+import MasFormularios from "./components/MasFormularios";
+import Resultados from "./components/Resultados";
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <PersonaCard
-          firstName="Jane"
-          lastName="Doe"
-          age={45}
-          hairColor="Black"
-        ></PersonaCard>
-        <PersonaCard
-          firstName="John"
-          lastName="Smith"
-          age={88}
-          hairColor="Brown"
-        ></PersonaCard>
-      </div>
-    );
-  }
-}
+const App = () => {
+  const [state, setState] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  return (
+    <div>
+      <MasFormularios inputs={state} setInputs={setState} />
+      <Resultados data={state} />
+    </div>
+  );
+};
 
 export default App;
