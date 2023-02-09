@@ -32,3 +32,8 @@ body {
 .App-link {
     color: #61dafb;
 }
+
+.actividades {
+    display: flex;
+    justify-content: center;
+}
