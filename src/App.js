@@ -1,29 +1,16 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ApiWalker from "./components/apiWalker";
 
-const App = () => {
-  const [pokeData, setPokeData] = useState([]);
-
-  const mostrarPokemones = () => {
-    axios
-      .get("https://pokeapi.co/api/v2/pokemon?limit=100")
-      .then((respuesta) => {
-        setPokeData(respuesta.data.results);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
+function App() {
   return (
     <div>
-      <button onClick={mostrarPokemones}>Fetch Pokemon</button>
-      {pokeData.map((pokemon, indicePokemon) => (
-        <li key={indicePokemon}>{pokemon.name}</li>
-      ))}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<ApiWalker />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
-};
+}
 
 export default App;
